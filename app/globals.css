@@ -1,0 +1,159 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: #0a1a0f;
+  --foreground: #f1f5f9;
+  --card: rgba(13, 40, 24, 0.6);
+  --card-foreground: #f1f5f9;
+  --popover: #0d2818;
+  --popover-foreground: #f1f5f9;
+  --primary: #10b981;
+  --primary-foreground: #022c22;
+  --secondary: rgba(16, 185, 129, 0.1);
+  --secondary-foreground: #34d399;
+  --muted: rgba(16, 185, 129, 0.08);
+  --muted-foreground: #94a3b8;
+  --accent: #4ade80;
+  --accent-foreground: #022c22;
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+  --border: rgba(16, 185, 129, 0.15);
+  --input: rgba(16, 185, 129, 0.15);
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #34d399;
+  --chart-3: #059669;
+  --chart-4: #4ade80;
+  --chart-5: #6ee7b7;
+  --radius: 0.625rem;
+  --gold: #f59e0b;
+  --silver: #9ca3af;
+  --bronze: #d97706;
+  --sidebar: #0d2818;
+  --sidebar-foreground: #f1f5f9;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #022c22;
+  --sidebar-accent: rgba(16, 185, 129, 0.1);
+  --sidebar-accent-foreground: #34d399;
+  --sidebar-border: rgba(16, 185, 129, 0.15);
+  --sidebar-ring: #10b981;
+}
+
+@theme inline {
+  --font-sans: 'Satoshi', 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-gold: var(--gold);
+  --color-silver: var(--silver);
+  --color-bronze: var(--bronze);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Stagger animation for cards */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fadeSlideUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+/* Shimmer / glow animation */
+@keyframes shimmer {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Pulse glow for breaking news */
+@keyframes pulseGlow {
+  0%, 100% { text-shadow: 0 0 8px rgba(74, 222, 128, 0.4); }
+  50% { text-shadow: 0 0 20px rgba(74, 222, 128, 0.8); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Battle card selection */
+@keyframes selectPulse {
+  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
+  50% { box-shadow: 0 0 30px 10px rgba(74, 222, 128, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+}
+
+.animate-select-pulse {
+  animation: selectPulse 0.6s ease-out;
+}
+
+/* Green glow for hero text */
+.text-glow-green {
+  text-shadow: 0 0 40px rgba(16, 185, 129, 0.3), 0 0 80px rgba(16, 185, 129, 0.15);
+}
