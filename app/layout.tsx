@@ -1,12 +1,29 @@
 import type { Metadata, Viewport } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
+import localFont from "next/font/local"
 import { Analytics } from "@vercel/analytics/next"
 import { Navbar } from "@/components/navbar"
-import { Ticker } from "@/components/ticker"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" })
+const geistMono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono" })
+const national2 = localFont({
+  src: [
+    { path: "./fonts/National2-Regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/National2-Medium.otf", weight: "500", style: "normal" },
+    { path: "./fonts/National2-Bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-national2",
+  display: "swap",
+})
+const ruzicka = localFont({
+  src: [
+    { path: "./fonts/DartmouthRuzicka-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/DartmouthRuzicka-Bold.ttf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-ruzicka",
+  display: "swap",
+})
 
 export const metadata: Metadata = {
   title: "Dartmouth Chad Rankings | Dartmouth's Facial Harmony Leaderboard",
@@ -33,7 +50,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: "#0a1a0f",
+  themeColor: "#0D1E1C",
 }
 
 export default function RootLayout({
@@ -43,9 +60,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">
+      <body className={`${geist.variable} ${geistMono.variable} ${ruzicka.variable} ${national2.variable} font-sans antialiased`}>
         <Navbar />
-        <Ticker />
         <main className="min-h-screen">{children}</main>
         <Analytics />
       </body>

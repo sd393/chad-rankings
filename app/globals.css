@@ -4,47 +4,47 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: #0a1a0f;
-  --foreground: #f1f5f9;
-  --card: rgba(13, 40, 24, 0.6);
-  --card-foreground: #f1f5f9;
-  --popover: #0d2818;
-  --popover-foreground: #f1f5f9;
-  --primary: #10b981;
-  --primary-foreground: #022c22;
-  --secondary: rgba(16, 185, 129, 0.1);
-  --secondary-foreground: #34d399;
-  --muted: rgba(16, 185, 129, 0.08);
+  --background: #0D1E1C;
+  --foreground: #ffffff;
+  --card: rgba(18, 49, 43, 0.6);
+  --card-foreground: #ffffff;
+  --popover: #12312b;
+  --popover-foreground: #ffffff;
+  --primary: #00693e;
+  --primary-foreground: #ffffff;
+  --secondary: rgba(0, 105, 62, 0.12);
+  --secondary-foreground: #a5d75f;
+  --muted: rgba(0, 105, 62, 0.08);
   --muted-foreground: #94a3b8;
-  --accent: #4ade80;
-  --accent-foreground: #022c22;
-  --destructive: #ef4444;
-  --destructive-foreground: #fef2f2;
-  --border: rgba(16, 185, 129, 0.15);
-  --input: rgba(16, 185, 129, 0.15);
-  --ring: #10b981;
-  --chart-1: #10b981;
-  --chart-2: #34d399;
-  --chart-3: #059669;
-  --chart-4: #4ade80;
-  --chart-5: #6ee7b7;
+  --accent: #a5d75f;
+  --accent-foreground: #0D1E1C;
+  --destructive: #9d162e;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 105, 62, 0.2);
+  --input: rgba(0, 105, 62, 0.2);
+  --ring: #00693e;
+  --chart-1: #00693e;
+  --chart-2: #a5d75f;
+  --chart-3: #267aba;
+  --chart-4: #f5dc69;
+  --chart-5: #ffa00f;
   --radius: 0.625rem;
-  --gold: #f59e0b;
+  --gold: #f5dc69;
   --silver: #9ca3af;
-  --bronze: #d97706;
-  --sidebar: #0d2818;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #10b981;
-  --sidebar-primary-foreground: #022c22;
-  --sidebar-accent: rgba(16, 185, 129, 0.1);
-  --sidebar-accent-foreground: #34d399;
-  --sidebar-border: rgba(16, 185, 129, 0.15);
-  --sidebar-ring: #10b981;
+  --bronze: #ffa00f;
+  --sidebar: #12312b;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00693e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: rgba(0, 105, 62, 0.12);
+  --sidebar-accent-foreground: #a5d75f;
+  --sidebar-border: rgba(0, 105, 62, 0.2);
+  --sidebar-ring: #00693e;
 }
 
 @theme inline {
-  --font-sans: 'Satoshi', 'Geist', 'Geist Fallback', ui-sans-serif, system-ui, sans-serif;
-  --font-mono: 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
+  --font-sans: var(--font-national2), var(--font-geist), 'Geist', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), 'Geist Mono', 'Geist Mono Fallback', ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -87,22 +87,16 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
-
-/* Marquee Animation */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 30s linear infinite;
 }
 
 /* Stagger animation for cards */
@@ -134,8 +128,8 @@
 
 /* Pulse glow for breaking news */
 @keyframes pulseGlow {
-  0%, 100% { text-shadow: 0 0 8px rgba(74, 222, 128, 0.4); }
-  50% { text-shadow: 0 0 20px rgba(74, 222, 128, 0.8); }
+  0%, 100% { text-shadow: 0 0 8px rgba(0, 105, 62, 0.4); }
+  50% { text-shadow: 0 0 20px rgba(0, 105, 62, 0.8); }
 }
 
 .animate-pulse-glow {
@@ -144,9 +138,9 @@
 
 /* Battle card selection */
 @keyframes selectPulse {
-  0% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6); }
-  50% { box-shadow: 0 0 30px 10px rgba(74, 222, 128, 0.3); }
-  100% { box-shadow: 0 0 0 0 rgba(74, 222, 128, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(0, 105, 62, 0.6); }
+  50% { box-shadow: 0 0 30px 10px rgba(0, 105, 62, 0.3); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 105, 62, 0); }
 }
 
 .animate-select-pulse {
@@ -155,5 +149,5 @@
 
 /* Green glow for hero text */
 .text-glow-green {
-  text-shadow: 0 0 40px rgba(16, 185, 129, 0.3), 0 0 80px rgba(16, 185, 129, 0.15);
+  text-shadow: 0 0 40px rgba(0, 105, 62, 0.4), 0 0 80px rgba(0, 105, 62, 0.2);
 }

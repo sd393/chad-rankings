@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, Swords, RotateCcw, Trophy } from "lucide-react"
+import { ArrowLeft, Swords, Trophy } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { battleRoster, type RankedEntry } from "@/lib/data"
 
@@ -83,7 +83,7 @@ export default function BattlePage() {
 
   if (finalWinner) {
     return (
-      <div className="mx-auto max-w-4xl px-4 py-10">
+      <div className="mx-auto max-w-4xl px-4 py-10" style={{ fontFamily: "var(--font-national2)" }}>
         <Link
           href="/"
           className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
@@ -96,11 +96,11 @@ export default function BattlePage() {
           <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-gold/20">
             <Trophy className="h-10 w-10 text-gold" />
           </div>
-          <h1 className="text-3xl font-extrabold text-foreground md:text-4xl">
-            Battle Champion
+          <h1 className="text-3xl font-bold text-foreground md:text-4xl" style={{ fontFamily: "var(--font-ruzicka)" }}>
+            Mog Off Champion
           </h1>
           <p className="mt-3 text-muted-foreground">
-            After {roundNumber} rounds of intense competition
+            After {roundNumber} rounds of intense mogging
           </p>
 
           <div className="mt-10 flex flex-col items-center">
@@ -120,13 +120,12 @@ export default function BattlePage() {
             </p>
           </div>
 
-          <button
-            onClick={handleRestart}
+          <Link
+            href="/"
             className="mt-10 inline-flex items-center gap-2 rounded-full border border-primary/30 px-6 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary/10"
           >
-            <RotateCcw className="h-4 w-4" />
-            Play Again
-          </button>
+            Back to Rankings
+          </Link>
         </div>
       </div>
     )
@@ -135,52 +134,26 @@ export default function BattlePage() {
   const pair = matchups[currentMatch]
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
+    <div className="mx-auto max-w-4xl px-4 py-10" style={{ fontFamily: "var(--font-national2)" }}>
       {/* Header */}
-      <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Back to Rankings
-        </Link>
-
-        <button
-          onClick={handleRestart}
-          className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
-        >
-          <RotateCcw className="h-4 w-4" />
-          Restart
-        </button>
-      </div>
+      <Link
+        href="/"
+        className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Back to Rankings
+      </Link>
 
       <div className="mb-10 text-center">
         <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15">
           <Swords className="h-6 w-6 text-primary" />
         </div>
-        <h1 className="text-2xl font-extrabold tracking-tight text-foreground md:text-3xl">
-          Dartmouth Chad Battle
+        <h1 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl" style={{ fontFamily: "var(--font-ruzicka)" }}>
+          Dartmouth Mog Off
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
-          Pick your favorite &mdash; last one standing wins
+          You get to decide who mogs
         </p>
-      </div>
-
-      {/* Progress */}
-      <div className="mb-8">
-        <div className="mb-2 flex items-center justify-between text-xs text-muted-foreground">
-          <span className="font-medium">Round {roundNumber}</span>
-          <span>
-            Match {currentMatch + 1} of {totalMatches}
-          </span>
-        </div>
-        <div className="h-2 overflow-hidden rounded-full bg-muted">
-          <div
-            className="h-full rounded-full bg-primary transition-all duration-500"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
       </div>
 
       {/* Battle cards */}
@@ -240,7 +213,7 @@ function BattleCard({
         isLosing && "opacity-40 scale-95"
       )}
     >
-      <div className="relative aspect-[3/4] w-full">
+      <div className="relative aspect-square w-full">
         <Image
           src={entry.avatar}
           alt={entry.name}
